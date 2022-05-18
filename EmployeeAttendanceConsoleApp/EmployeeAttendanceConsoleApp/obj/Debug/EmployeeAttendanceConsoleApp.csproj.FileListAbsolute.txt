@@ -1,0 +1,10 @@
+C:\Users\Pavitra\Visual Studio Projects\Customer Console Application\EmployeeAttendanceConsoleApp\EmployeeAttendanceConsoleApp\bin\Debug\EmployeeAttendanceConsoleApp.exe.config
+C:\Users\Pavitra\Visual Studio Projects\Customer Console Application\EmployeeAttendanceConsoleApp\EmployeeAttendanceConsoleApp\obj\Debug\EmployeeAttendanceConsoleApp.csprojResolveAssemblyReference.cache
+C:\Users\Pavitra\Visual Studio Projects\Customer Console Application\EmployeeAttendanceConsoleApp\EmployeeAttendanceConsoleApp\bin\Debug\EmployeeAttendanceConsoleApp.exe
+C:\Users\Pavitra\Visual Studio Projects\Customer Console Application\EmployeeAttendanceConsoleApp\EmployeeAttendanceConsoleApp\bin\Debug\EmployeeAttendanceConsoleApp.pdb
+C:\Users\Pavitra\Visual Studio Projects\Customer Console Application\EmployeeAttendanceConsoleApp\EmployeeAttendanceConsoleApp\bin\Debug\EntityFramework.dll
+C:\Users\Pavitra\Visual Studio Projects\Customer Console Application\EmployeeAttendanceConsoleApp\EmployeeAttendanceConsoleApp\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Pavitra\Visual Studio Projects\Customer Console Application\EmployeeAttendanceConsoleApp\EmployeeAttendanceConsoleApp\bin\Debug\EntityFramework.xml
+C:\Users\Pavitra\Visual Studio Projects\Customer Console Application\EmployeeAttendanceConsoleApp\EmployeeAttendanceConsoleApp\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Pavitra\Visual Studio Projects\Customer Console Application\EmployeeAttendanceConsoleApp\EmployeeAttendanceConsoleApp\obj\Debug\EmployeeAttendanceConsoleApp.exe
+C:\Users\Pavitra\Visual Studio Projects\Customer Console Application\EmployeeAttendanceConsoleApp\EmployeeAttendanceConsoleApp\obj\Debug\EmployeeAttendanceConsoleApp.pdb
