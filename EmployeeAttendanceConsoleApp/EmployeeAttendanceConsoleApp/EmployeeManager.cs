@@ -15,40 +15,38 @@ namespace EmployeeAttendanceConsoleApp
             {
                 try
                 {
-                    int id,empId, managerId;
-                    string leaveType;
-                    DateTime dt;
+           
+                    int maxId, empId, managerId;
+                    string leaveType, dt; 
                     Console.WriteLine("\nEnter employee Id to apply for leave :");
                     empId = int.Parse(Console.ReadLine());
                     Console.WriteLine("\nApply leave for any date for above employee :");
                     Console.WriteLine("\nId :");
-                    id = int.Parse(Console.ReadLine());
+                    maxId = int.Parse(Console.ReadLine());
                     Console.WriteLine("\nmanagerId :");
                     managerId = int.Parse(Console.ReadLine());
                     Console.Write("Leave Type:");
                     leaveType = Console.ReadLine();
-                    Console.Write("Date");
-                    dt = DateTime.Parse(Console.ReadLine());
+                    Console.Write("Date :");
+                    dt = Console.ReadLine();
 
-                    var query2 = from leaves in db.Leaves
-                                 select leaves;
 
-                    foreach (Leave details in query2)
-                    {
-                            details.id = id;
-                            details.emp_id = empId;
-                            details.date = dt;
-                            details.manager_id = managerId;
-                            details.LeaveType = leaveType;
-                    }
+                    /*var maxId = from row in db.Leaves
+                                 group row by true into r
+                                 select new
+                                 {
+                                     max = r.Max(z => z.id)
+                                 };
+                    */
+
+                    Leave objLeave = new Leave() { id =maxId, emp_id = empId, date = dt, manager_id = managerId, LeaveType = leaveType };
+                    db.Leaves.Add(objLeave);
+                    db.SaveChanges();
                 }
                 catch (Exception ex)
                 {
                     throw;
                 }
-                //Console.WriteLine("Status Before SaveChanges " + db.Entry(db.Attendances).State.ToString());   //Added
-                db.SaveChanges();
-                //Console.WriteLine("Status After SaveChanges  " + db.Entry(db.Attendances).State.ToString());  //Unchange
             }
             
         }
@@ -61,9 +59,9 @@ namespace EmployeeAttendanceConsoleApp
             {
                 int empId, salary;
                 string empName, gender;
-                Console.WriteLine("\n\n\nEnter employee Id for attendance update :");
+                Console.WriteLine("\nEnter employee Id for attendance update :");
                 empId = int.Parse(Console.ReadLine());
-                Console.WriteLine("Enter Employee Details for Empoyee Id {0} :", empId);
+                Console.WriteLine("\nEnter Employee Details for Empoyee Id {0} :", empId);
                 Console.Write("Employee Name :");
                 empName = Console.ReadLine();
                 Console.Write("Salary:");
@@ -74,7 +72,7 @@ namespace EmployeeAttendanceConsoleApp
                 var query = from empDetails in db.Employees
                             orderby empDetails.employee_name
                             select empDetails;
-                Console.WriteLine("Employee Details in DB");
+                //Console.WriteLine("Employee Details in DB");
                 foreach (Employee fullDetails in query)
                 {
                     if (fullDetails.emp_id == empId)
@@ -102,26 +100,27 @@ namespace EmployeeAttendanceConsoleApp
             {
                 try
                 {
-                    string empId;
-                    string attdnce;
-                    //DateTime dt;
-                    Console.WriteLine("\n\n\nEnter employee Id for attendance update :");
-                    empId = Console.ReadLine();
-                    Console.WriteLine("Enter attendance for any date for above employee :");
+                    int empId, id;
+                    string attdnce, dt;
+                    Console.WriteLine("\nEnter attendance Id for attendance update :");
+                    id = int.Parse(Console.ReadLine());
+                    Console.WriteLine("\nEnter employee Id for attendance update :");
+                    empId = int.Parse(Console.ReadLine());
+                    Console.WriteLine("\nEnter attendance for any date for Emp Id {0} :", empId);
                     Console.Write("Present or Absent:");
                     attdnce = Console.ReadLine();
-                    //Console.Write("Date");
-                    //dt = DateTime.Parse(Console.ReadLine());
+                    Console.Write("Date :");
+                    dt = Console.ReadLine();
 
-                    var query2 = from attendances in db.Attendances
-                                 select attendances;
+                    var query2 = from attendanceDetails in db.Attendances
+                                 select attendanceDetails;
 
                     foreach (Attendance details in query2)
                     {
-                        if (details.emp_id.Equals(empId))
+                        if (details.emp_id == empId && details.id == id)
                         {
                             details.attendance1 = attdnce;
-                            //details.date = dt;
+                            details.date = dt;
                         }
                     }
                 }

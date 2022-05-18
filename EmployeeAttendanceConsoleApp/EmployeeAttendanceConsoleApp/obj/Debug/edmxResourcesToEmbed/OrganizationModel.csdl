@@ -1,14 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="OrganizationDbContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Attendances" EntityType="Model.Attendance" />
+    <EntitySet Name="Employees" EntityType="Model.Employee" />
+    <EntitySet Name="Leaves" EntityType="Model.Leave" />
+    <AssociationSet Name="FK__Attendanc__emp_i__37A5467C" Association="Model.FK__Attendanc__emp_i__37A5467C">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Attendance" EntitySet="Attendances" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Leave__emp_id__3A81B327" Association="Model.FK__Leave__emp_id__3A81B327">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Leave" EntitySet="Leaves" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Leave__manager_i__3B75D760" Association="Model.FK__Leave__manager_i__3B75D760">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Leave" EntitySet="Leaves" />
+    </AssociationSet>
+  </EntityContainer>
   <EntityType Name="Attendance">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" />
     <Property Name="emp_id" Type="Int32" />
-    <Property Name="date" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="Employee" Relationship="Self.FK__Attendanc__emp_i__2A4B4B5E" FromRole="Attendance" ToRole="Employee" />
+    <Property Name="date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="attendance1" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="Model.FK__Attendanc__emp_i__37A5467C" FromRole="Attendance" ToRole="Employee" />
   </EntityType>
   <EntityType Name="Employee">
     <Key>
@@ -18,13 +35,25 @@
     <Property Name="employee_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
     <Property Name="salary" Type="Int32" />
     <Property Name="gendar" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Attendances" Relationship="Self.FK__Attendanc__emp_i__2A4B4B5E" FromRole="Employee" ToRole="Attendance" />
-    <NavigationProperty Name="Leaves" Relationship="Model.FK__Leave__emp_id__33D4B598" FromRole="Employee" ToRole="Leave" />
-    <NavigationProperty Name="Leaves1" Relationship="Model.FK__Leave__manager_i__34C8D9D1" FromRole="Employee" ToRole="Leave" />
+    <NavigationProperty Name="Attendances" Relationship="Model.FK__Attendanc__emp_i__37A5467C" FromRole="Employee" ToRole="Attendance" />
+    <NavigationProperty Name="Leaves" Relationship="Model.FK__Leave__emp_id__3A81B327" FromRole="Employee" ToRole="Leave" />
+    <NavigationProperty Name="Leaves1" Relationship="Model.FK__Leave__manager_i__3B75D760" FromRole="Employee" ToRole="Leave" />
   </EntityType>
-  <Association Name="FK__Attendanc__emp_i__2A4B4B5E">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
-    <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
+  <EntityType Name="Leave">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="emp_id" Type="Int32" />
+    <Property Name="date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="manager_id" Type="Int32" />
+    <Property Name="LeaveType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="Model.FK__Leave__emp_id__3A81B327" FromRole="Leave" ToRole="Employee" />
+    <NavigationProperty Name="Employee1" Relationship="Model.FK__Leave__manager_i__3B75D760" FromRole="Leave" ToRole="Employee" />
+  </EntityType>
+  <Association Name="FK__Attendanc__emp_i__37A5467C">
+    <End Type="Model.Employee" Role="Employee" Multiplicity="0..1" />
+    <End Type="Model.Attendance" Role="Attendance" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
         <PropertyRef Name="emp_id" />
@@ -34,36 +63,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="OrganizationDbContext" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Attendances" EntityType="Self.Attendance" />
-    <EntitySet Name="Employees" EntityType="Self.Employee" />
-    <AssociationSet Name="FK__Attendanc__emp_i__2A4B4B5E" Association="Self.FK__Attendanc__emp_i__2A4B4B5E">
-      <End Role="Employee" EntitySet="Employees" />
-      <End Role="Attendance" EntitySet="Attendances" />
-    </AssociationSet>
-    <EntitySet Name="Leaves" EntityType="Model.Leave" />
-    <AssociationSet Name="FK__Leave__emp_id__33D4B598" Association="Model.FK__Leave__emp_id__33D4B598">
-      <End Role="Employee" EntitySet="Employees" />
-      <End Role="Leave" EntitySet="Leaves" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Leave__manager_i__34C8D9D1" Association="Model.FK__Leave__manager_i__34C8D9D1">
-      <End Role="Employee" EntitySet="Employees" />
-      <End Role="Leave" EntitySet="Leaves" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="Leave">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" />
-    <Property Name="emp_id" Type="Int32" />
-    <Property Name="date" Type="DateTime" Precision="0" />
-    <Property Name="manager_id" Type="Int32" />
-    <Property Name="LeaveType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Employee" Relationship="Model.FK__Leave__emp_id__33D4B598" FromRole="Leave" ToRole="Employee" />
-    <NavigationProperty Name="Employee1" Relationship="Model.FK__Leave__manager_i__34C8D9D1" FromRole="Leave" ToRole="Employee" />
-  </EntityType>
-  <Association Name="FK__Leave__emp_id__33D4B598">
+  <Association Name="FK__Leave__emp_id__3A81B327">
     <End Type="Model.Employee" Role="Employee" Multiplicity="0..1" />
     <End Type="Model.Leave" Role="Leave" Multiplicity="*" />
     <ReferentialConstraint>
@@ -75,7 +75,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Leave__manager_i__34C8D9D1">
+  <Association Name="FK__Leave__manager_i__3B75D760">
     <End Type="Model.Employee" Role="Employee" Multiplicity="0..1" />
     <End Type="Model.Leave" Role="Leave" Multiplicity="*" />
     <ReferentialConstraint>

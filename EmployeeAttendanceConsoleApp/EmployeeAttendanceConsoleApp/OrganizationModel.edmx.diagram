@@ -5,12 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="35c669fd1a9249beb21ce1975563cdd9" Name="Diagram1" DisplayType="true">
-        <EntityTypeShape EntityType="Model.Attendance" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Employee" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="Model.FK__Attendanc__emp_i__2A4B4B5E" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Model.Leave" Width="1.5" PointX="3" PointY="3.875" />
-        <AssociationConnector Association="Model.FK__Leave__emp_id__33D4B598" />
-        <AssociationConnector Association="Model.FK__Leave__manager_i__34C8D9D1" />
+        <EntityTypeShape EntityType="Model.Attendance" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="Model.Employee" Width="1.5" PointX="0.75" PointY="2.5" />
+        <EntityTypeShape EntityType="Model.Leave" Width="1.5" PointX="3" PointY="3.75" />
+        <AssociationConnector Association="Model.FK__Attendanc__emp_i__37A5467C" />
+        <AssociationConnector Association="Model.FK__Leave__emp_id__3A81B327" />
+        <AssociationConnector Association="Model.FK__Leave__manager_i__3B75D760" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

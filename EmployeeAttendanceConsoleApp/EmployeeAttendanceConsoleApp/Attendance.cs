@@ -16,7 +16,7 @@ namespace EmployeeAttendanceConsoleApp
     {
         public int id { get; set; }
         public Nullable<int> emp_id { get; set; }
-        public Nullable<System.DateTime> date { get; set; }
+        public string date { get; set; }
         public string attendance1 { get; set; }
     
         public virtual Employee Employee { get; set; }

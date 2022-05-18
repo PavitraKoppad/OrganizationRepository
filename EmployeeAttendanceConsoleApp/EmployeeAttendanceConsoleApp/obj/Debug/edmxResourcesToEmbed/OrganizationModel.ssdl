@@ -6,7 +6,7 @@
     </Key>
     <Property Name="id" Type="int" Nullable="false" />
     <Property Name="emp_id" Type="int" />
-    <Property Name="date" Type="date" />
+    <Property Name="date" Type="varchar" MaxLength="10" />
     <Property Name="attendance" Type="varchar" MaxLength="1" />
   </EntityType>
   <EntityType Name="Employee">
@@ -24,11 +24,11 @@
     </Key>
     <Property Name="id" Type="int" Nullable="false" />
     <Property Name="emp_id" Type="int" />
-    <Property Name="date" Type="date" />
+    <Property Name="date" Type="varchar" MaxLength="10" />
     <Property Name="manager_id" Type="int" />
     <Property Name="LeaveType" Type="varchar" MaxLength="30" />
   </EntityType>
-  <Association Name="FK__Attendanc__emp_i__2D27B809">
+  <Association Name="FK__Attendanc__emp_i__37A5467C">
     <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
     <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
     <ReferentialConstraint>
@@ -40,7 +40,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Leave__emp_id__33D4B598">
+  <Association Name="FK__Leave__emp_id__3A81B327">
     <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
     <End Role="Leave" Type="Self.Leave" Multiplicity="*" />
     <ReferentialConstraint>
@@ -52,7 +52,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Leave__manager_i__34C8D9D1">
+  <Association Name="FK__Leave__manager_i__3B75D760">
     <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
     <End Role="Leave" Type="Self.Leave" Multiplicity="*" />
     <ReferentialConstraint>
@@ -68,15 +68,15 @@
     <EntitySet Name="Attendance" EntityType="Self.Attendance" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Leave" EntityType="Self.Leave" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Attendanc__emp_i__2D27B809" Association="Self.FK__Attendanc__emp_i__2D27B809">
+    <AssociationSet Name="FK__Attendanc__emp_i__37A5467C" Association="Self.FK__Attendanc__emp_i__37A5467C">
       <End Role="Employee" EntitySet="Employee" />
       <End Role="Attendance" EntitySet="Attendance" />
     </AssociationSet>
-    <AssociationSet Name="FK__Leave__emp_id__33D4B598" Association="Self.FK__Leave__emp_id__33D4B598">
+    <AssociationSet Name="FK__Leave__emp_id__3A81B327" Association="Self.FK__Leave__emp_id__3A81B327">
       <End Role="Employee" EntitySet="Employee" />
       <End Role="Leave" EntitySet="Leave" />
     </AssociationSet>
-    <AssociationSet Name="FK__Leave__manager_i__34C8D9D1" Association="Self.FK__Leave__manager_i__34C8D9D1">
+    <AssociationSet Name="FK__Leave__manager_i__3B75D760" Association="Self.FK__Leave__manager_i__3B75D760">
       <End Role="Employee" EntitySet="Employee" />
       <End Role="Leave" EntitySet="Leave" />
     </AssociationSet>
